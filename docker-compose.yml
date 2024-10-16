@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  go-app:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: go-app
+    volumes:
+      - ./api:/app
+      - /app/air
+    ports:
+      - '8086:8080'
+    environment:
+      - GO_ENV=development
+    command: ["air"]
